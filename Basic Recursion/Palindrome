@@ -1,0 +1,12 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        clean = ''.join(c.lower() for c in s if c.isalnum())
+
+        def check(left: int, right: int) -> bool:
+            if left >= right:
+                return True
+            if clean[left] != clean[right]:
+                return False
+            return check(left + 1, right - 1)
+
+        return check(0, len(clean) - 1)
