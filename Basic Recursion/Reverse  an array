@@ -1,0 +1,12 @@
+def rev(cur,arr,n):
+    if n<0:
+        return cur
+    else:
+        cur.append(arr[n])
+        return rev(cur,arr,n-1)
+    # return cur
+    
+arr = [1,2,3,4,5]
+cur = []
+m = rev(cur,arr,4)
+print(m)
