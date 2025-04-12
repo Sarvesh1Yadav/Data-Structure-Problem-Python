@@ -1,0 +1,8 @@
+def rec(current,n):
+    if n<1:
+        return
+    else:
+        print(current)
+        rec(current+1,n-1)
+n = int(input("enter number"))
+rec(1,n)
