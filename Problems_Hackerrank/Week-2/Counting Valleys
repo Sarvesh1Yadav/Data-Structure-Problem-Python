@@ -1,0 +1,42 @@
+Problem Statement - An avid hiker keeps meticulous records of their hikes. During the last hike that took exactly STEPS steps, for every step it was noted if it was an uphill,U , or a downhill, D step.
+Hikes always start and end at sea level, and each step up or down represents a 1 unit change in altitude.Given the sequence of up and down steps during a hike, find and print the number of valleys walked through.
+
+
+import math
+import os
+import random
+import re
+import sys
+
+def countingValleys(steps, path):
+    # Write your code here
+    level = 0
+    count = 0
+    for i in range(steps):
+        if level==-1:
+            if path[i]=='U':
+                level+=1
+                count+=1
+            else:
+                level-=1
+        else:
+            if path[i]=='U':
+                level+=1
+            else:
+                level-=1
+    return count
+            
+        
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    steps = int(input().strip())
+
+    path = input()
+
+    result = countingValleys(steps, path)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
