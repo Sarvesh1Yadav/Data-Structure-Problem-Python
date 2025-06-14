@@ -1,0 +1,29 @@
+Problem Statement - A pangram is a string that contains every letter of the alphabet. Given a sentence determine whether it is a pangram in the English alphabet.
+Ignore case. Return either pangram or not pangram as appropriate.
+
+import math
+import os
+import random
+import re
+import string
+import sys
+
+def pangrams(s):
+    # Write your code here
+    st = set(s.lower())
+    if set(string.ascii_lowercase).issubset(st):
+        return 'pangram'
+    else:
+        return 'not pangram'
+    
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = pangrams(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
