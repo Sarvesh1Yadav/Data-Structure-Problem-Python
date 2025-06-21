@@ -1,0 +1,41 @@
+Problem Statement - Given an array of bird sightings where every element represents a bird type id, determine the id of the most frequently sighted type. 
+If more than 1 type has been spotted that maximum amount, return the smallest of their ids.
+
+import math
+import os
+import random
+import re
+import sys
+
+def migratoryBirds(arr):
+    # Write your code here
+    arr.sort()
+    max = 1
+    u = list(set(arr))
+    u.sort()
+    r = u[0]
+    for i in range(len(u)):
+        count = 0
+        for j in range(len(arr)):
+            if arr[j]==u[i]:
+                count+=1
+        if count>max:
+            max = count
+            r = u[i]
+        if count==max and u[i]<r:
+            r=u[i]
+    return r
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = migratoryBirds(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
