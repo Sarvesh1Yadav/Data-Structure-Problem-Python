@@ -1,0 +1,19 @@
+def rev1(m,n,arr):
+    for k in range(m):
+        i=0
+        j=n-1
+        while(i<=j):
+            arr[k][i],arr[k][j]=arr[k][j],arr[k][i]
+            i+=1
+            j-=1
+    for i in range(m):
+        for j in range(n):
+            print(arr[i][j],end = " ")
+        print()
+m,n = map(int,input().split())
+arr = [[0 for _ in range(n)] for _ in range(m)]
+for i in range(m):
+    row = list(map(int,input().split()))
+    for j in range(n):
+        arr[i][j] = row[j]
+rev1(m,n,arr)
