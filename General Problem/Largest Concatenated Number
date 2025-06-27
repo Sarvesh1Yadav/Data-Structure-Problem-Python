@@ -1,0 +1,18 @@
+from functools import cmp_to_key
+def larg(n,arr):
+    str_num = list(map(str,arr))
+    def compare(a,b):
+        if a+b>b+a:
+            return -1
+        else:
+            return 1
+            
+    str_num.sort(key = cmp_to_key(compare))
+    l = "".join(str_num)
+    if l[0]=='0':
+         return '0'
+    return l
+n = int(input())
+arr = list(map(int,input().split()))
+m = larg(n,arr)
+print(m)
