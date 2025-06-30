@@ -1,0 +1,44 @@
+Problem Statement - Sorting is useful as the first step in many different tasks. The most common task is to make finding things easier, but there are other uses as well.
+In this case, it will make it easier to determine which pair or pairs of elements have the smallest absolute difference between them.
+
+import math
+import os
+import random
+import re
+import sys
+
+def closestNumbers(arr):
+    # Write your code here
+    arr.sort()
+    n = len(arr)
+    l = []
+    min = arr[1] - arr[0]
+    for i in range(1,n):
+        
+            if (arr[i]-arr[i-1]) < min:
+                l.clear()
+                min = (arr[i]-arr[i-1])
+                l.extend([arr[i-1],arr[i]])
+                
+            elif (arr[i]-arr[i-1]) == min:
+                l.extend([arr[i-1],arr[i]])
+                
+            else:
+                continue
+    return l
+                
+                
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = closestNumbers(arr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
