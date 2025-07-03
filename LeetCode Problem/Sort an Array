@@ -1,0 +1,35 @@
+class Solution:
+    def merge(self,nums,low,mid,high):
+        l=[]
+        left=low
+        right=mid+1
+        while(left<=mid) and (right<=high):
+            if nums[left]<=nums[right]:
+                l.append(nums[left])
+                left+=1
+            else:
+                l.append(nums[right])
+                right+=1
+        while left<=mid:
+            l.append(nums[left])
+            left+=1
+        while right<=high:
+            l.append(nums[right])
+            right+=1
+        for i in range(len(l)):
+            nums[low+i]=l[i]
+        return nums
+    def merge_s(self,nums,low,high):
+        if low>=high:
+            return
+        mid=(low+high)//2
+        self.merge_s(nums,low,mid)
+        self.merge_s(nums,mid+1,high)
+        self.merge(nums,low,mid,high)
+        return nums
+
+    def sortArray(self, nums: List[int]) -> List[int]:
+       self.merge_s(nums,0,len(nums)-1)
+       return nums
+                
+        
