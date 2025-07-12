@@ -1,0 +1,23 @@
+Problem statement - Two words are anagramsof one another if their letters can be rearranged to form the other word.
+ Given a string, split it into two contiguous substrings of equal length. Determine the minimum number of
+ characters to change to make the two substrings into anagrams of one another.
+
+
+def anagram(s):
+    # Write your code here
+    s1 = ''
+    s2 = ''
+    n = len(s)
+    mid = n//2
+    if n%2!=0:
+        return -1
+    
+    s1 = s[:mid]
+    s2 = s[mid:]
+    from collections import Counter
+    
+    c1 = Counter(s1)
+    c2 = Counter(s2)
+    
+    diff = c1 - c2 
+    return sum(diff.values())
