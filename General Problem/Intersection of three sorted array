@@ -1,0 +1,19 @@
+Problem - You are given three sorted integer arrays nums1 , nums2 , and
+nums3 . Your task is to return a sorted array containing only the
+integers that appear in all three arrays.
+
+class solution:
+    def getCommonElements(self, nums1, nums2, nums3):
+        #Write your code here...
+        l = []
+        for i in nums1:
+            for j in nums2:
+                if i==j:
+                    for k in nums3:
+                        if i==k:
+                            l.append(i)
+                        else:
+                            continue
+                else:
+                    continue
+        return l
