@@ -1,0 +1,12 @@
+class solution:
+    def sumOfMinSubarrayElements(self, arr):
+        #Write your code here...
+        n = len(arr)
+        sum = 0
+        for i in range(n):
+            a = arr[i]
+            for c in range(i,n):
+                a = min(a,arr[c])
+                sum+=a
+                
+        return sum
