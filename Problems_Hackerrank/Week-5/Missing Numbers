@@ -1,0 +1,47 @@
+Problem Statement - Given two arrays of integers, find which elements in the second array are missing from the first array.
+
+import math
+import os
+import random
+import re
+import sys
+
+def missingNumbers(arr, brr):
+    # Write your code here
+    freq1 = {}
+    l = []
+    for i in arr:
+        if i in freq1:
+            freq1[i]+=1
+        else:
+            freq1[i] = 1
+    freq2 = {}
+    for i in brr:
+        if i in freq2:
+            freq2[i]+=1
+        else:
+            freq2[i] = 1
+    for num in freq2:
+        if num not in freq1 or freq2[num] > freq1[num]:
+            l.append(num)
+    l.sort()
+    return l
+    
+            
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    m = int(input().strip())
+
+    brr = list(map(int, input().rstrip().split()))
+
+    result = missingNumbers(arr, brr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
