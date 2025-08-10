@@ -1,3 +1,4 @@
+Problem Statement - Sort an array in ascending order by inserting unsorted position to correct position. Tell number of swaps to sort the array
 class solution:
     def countSwaps(self, arr, n):
         #Write your code here...
