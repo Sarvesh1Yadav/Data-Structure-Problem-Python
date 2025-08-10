@@ -1,0 +1,14 @@
+class solution:
+    def countSwaps(self, arr, n):
+        #Write your code here...
+        count = 0
+        for i in range(n):
+            swapped = False
+            for j in range(0,n-i-1):
+                if arr[j]>arr[j+1]:
+                    arr[j],arr[j+1]=arr[j+1],arr[j]
+                    count+=1
+                    swapped = True
+            if not swapped:
+                break
+        return count
