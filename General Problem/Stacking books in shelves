@@ -1,0 +1,22 @@
+Problem - You are given with an array of size n where arr[i] represents the number on the ith book and an integer shelfsize which represents number of book in each shelf.
+Your task is to return True if the books can be arranged into shelves of shelfsize consecutive number otherwise false.
+
+class solution:
+    def canArrangeBooks(self, books, shelfSize):
+        #Write your code here...
+        n = len(books)
+        books.sort()
+        if shelfSize==1:
+            for i in range(n-1):
+                if books[i]==books[i+1]:
+                    return False
+            return True
+        else:
+            
+            for i in range(0,n,shelfSize):
+                end = min(i+shelfSize,n)
+                for j in range(i,end-1):
+                    if books[j]==books[j+1]:
+                        return False
+                    
+            return True
