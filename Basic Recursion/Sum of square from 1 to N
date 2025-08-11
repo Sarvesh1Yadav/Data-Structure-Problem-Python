@@ -1,0 +1,8 @@
+class solution:
+    def recursiveSumOfSquares(self, n):
+        # Code Here
+        
+        if n==1:
+            return 1
+        else:
+           return  n**2+self.recursiveSumOfSquares(n-1)
