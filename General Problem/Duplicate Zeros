@@ -1,0 +1,22 @@
+Problem Statement - You are given an integer array arr. Your task is to duplicate every occurrence of 0, shifting the remaining elements to the right. 
+The length of the array stays fixed, so elements beyond the original array length are not considered.
+Modify the input array in-place without returning anything.
+
+class solution:
+    def duplicateZeros(self, arr):
+        #Write your code here...
+        n = len(arr)
+
+        i=0
+        while i<n:
+            if arr[i]==0:
+                for j in range(n-1,i,-1):
+                    arr[j]=arr[j-1]
+                if i+1<n:
+                    arr[i]=0
+                    
+                
+                i+=2
+            else:
+                
+                i+=1
