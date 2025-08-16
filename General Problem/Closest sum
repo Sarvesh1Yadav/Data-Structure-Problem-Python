@@ -1,0 +1,23 @@
+Problem Statement - find the three numbers in the array arr whose sum is closest to the target
+
+class solution:
+    def threeSumClosest(self, arr, target):
+        #Write your code here...
+        n = len(arr)
+        arr.sort()
+        mi = arr[0]+arr[1]+arr[2]
+        for i in range(n):
+            left = i+1
+            right = n-1
+            while left<right:
+                cur = arr[i]+arr[left]+arr[right]
+                if cur==target:
+                    return cur
+                if abs(cur-target)<abs(mi-target):
+                    mi = cur
+                if cur<target:
+                    left+=1
+                else:
+                    right-=1
+       
+        return mi
