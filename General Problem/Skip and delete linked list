@@ -1,0 +1,28 @@
+Problem Statement:-
+You are given a linked list and two integers, m and n. Your task is to traverse the linked list and perform the following operations repeatedly until the end of the list is reached:
+Skip n nodes: Traverse the first n nodes without modifying them.
+Delete m nodes: After skipping n nodes, delete the next m nodes.
+The remaining nodes should maintain their original relative order, and no additional nodes should be created during this process.
+Repeat these steps until the entire linked list has been processed.
+
+class solution:
+    def deleteNAfterMNodes(self, Node, head, m, n):
+        #Write your code here...
+        cur = head
+        if not head or m<=0 or n<=0:
+            return head
+        while cur:
+            for _ in range(m-1):
+                if cur:
+                    cur = cur.next
+                else:
+                    return head
+            if not cur:
+                return head
+            temp = cur.next
+            for _ in range(n):
+                if temp:
+                    temp=temp.next
+            cur.next = temp
+            cur = temp
+        return head
