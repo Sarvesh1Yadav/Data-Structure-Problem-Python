@@ -1,0 +1,10 @@
+Problem Statement - You are given a string text. Your task is to reverse the sequence of words in the string.
+A word is defined as a continuous sequence of non-space characters, and these words are typically separated by spaces within the string text.
+The goal is to return a string with these words in reverse order, with each word separated by a single space.
+
+class solution:
+    def reverseWords(self, text):
+        #Write your code here...
+        words = text.split()
+        rev_words= words[::-1] 
+        return " ".join(rev_words)
