@@ -1,0 +1,20 @@
+Problem Satement - 
+You’re given an integer n.Your task is to return an array, arr, with length (n+1) such that for each i,where for each index i (0 ≤ i ≤ n):
+arr[i] = the number of 1's in the binary representation of i
+
+class solution:
+  def countSetBits(self, n):
+          # Write your code here...
+          l = []
+          l.append(0)
+          for i in range(1,n+1):
+              count = 0
+              temp = i
+              while temp:
+                   temp = temp&(temp-1)
+                   count+=1
+              l.append(count)
+          return l
+        
+
+
