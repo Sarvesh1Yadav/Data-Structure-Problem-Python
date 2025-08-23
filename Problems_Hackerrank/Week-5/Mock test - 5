@@ -1,0 +1,12 @@
+import sys
+sys.set_int_max_str_digits(1_000_000)
+def fibonacciModified(t1, t2, n):
+   if n == 1:
+     return t1
+   elif n == 2:
+     return t2
+   for _ in range(3, n + 1):
+     next_term = t1 + t2 ** 2
+     t1 = t2
+     t2 = next_term
+   return t2
