@@ -1,0 +1,13 @@
+Problem - You are given an array of integers arr with integers n. Your task is to return the second largest element in the array.
+
+class solution:
+    def secondLargestElement(self, arr, n):
+        #Write your code here...
+        m = max(arr)
+        arr.remove(m)
+        while True:
+            p = max(arr)
+            if p==m:
+                arr.remove(m)
+            else:
+                return p
