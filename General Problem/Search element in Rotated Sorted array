@@ -1,0 +1,22 @@
+Problem - We have a sorted array that has been rotated at some unknown pivot point
+We need to find the index of a target value x using an efficient algorithm
+The array was originally sorted, so even after rotation, parts of it remain sorted
+
+class solution:
+    def searchRotatedSorted(self, arr, n, x):
+        #Write your code here...
+        if arr[0]<=arr[-1]:
+            left,right = 0,n-1
+            while left<=right:
+                mid = (left+right)//2
+                if arr[mid]==x:
+                    return mid
+                elif arr[mid]<x:
+                    left+=1
+                else:
+                    right-=1
+            return -1
+        for i in range(n):
+            if arr[i]==x:
+                return i
+        return -1
