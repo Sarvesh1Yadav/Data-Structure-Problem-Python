@@ -1,0 +1,31 @@
+Problem Statement - Given the head of a sorted doubly linked list, your task is to remove all duplicate nodes and return the head of the modified doubly linked list.
+The list is sorted in non-decreasing order. You need to ensure that each distinct value appears only once in the final list.
+
+"""
+class Node:
+    def __init__(self, data, next=None, prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+"""
+        
+class solution:
+    def removeDuplicates(self, head):
+        #Write your code here...
+        if not head:
+            return head
+        cur = head
+        seen = set()
+        while cur:
+            if cur.data in seen:
+                
+               if cur.prev:
+                   cur.prev.next = cur.next
+               if cur.next:
+                    cur.next.prev = cur.prev
+            else:
+                seen.add(cur.data)
+            cur = cur.next
+         
+        return head
+                
