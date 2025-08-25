@@ -1,0 +1,16 @@
+Problem Statement - You are given two numbers: a floating-point number x and an integer n. Your task is to implement a function that calculates x raised to the power of n (i.e., xⁿ).
+You need to handle both positive and negative values of n. If n is negative, return the reciprocal of the result for the positive exponent.
+
+class solution:
+    def xPowN(self, x, n):
+        # Write Your Code Here...
+        
+        if n==0:
+            return 1
+        if n<0:
+            return 1/self.xPowN(x,-n)
+        half = self.xPowN(x,n//2)
+        if n%2==0:
+            return half*half
+        else:
+            return x*half*half
