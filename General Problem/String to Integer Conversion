@@ -1,0 +1,43 @@
+class solution:
+    def stringToInteger(self, s):
+        #Write your code here...
+        l = []
+        x = True
+        t=False
+        res = [str(i) for i in range(1,10)]
+        flag = False
+        for i in s:
+            if t:
+                if i=="0":
+                    l.append(i)
+            if i=="0" or i==" ":
+                 continue
+            
+            elif i=="-":
+                if t:
+                    break
+                flag = True
+            
+            elif i in res:
+                
+                l.append(i)
+                x= False
+                t = True
+            else:
+                break
+        if x==True:
+            return 0
+        g = "".join(l)
+        if flag:
+            k =  -1*int(g)
+            if k<pow(-2,31):
+                return pow(-2,31)
+            else:
+                return k
+        else:
+            p =  int(g)
+            if p>(pow(2,31)-1):
+                return pow(2,31)-1
+            else:
+                return p
+                
