@@ -1,0 +1,14 @@
+class solution:
+    def xorRange(self, left, right):
+        #Write your code here...
+        def xn(n):
+            mod = n%4
+            if mod==0:
+                return n
+            elif mod==1:
+                return 1
+            elif mod==2:
+                return n+1
+            else:
+              return 0
+        return xn(right)^xn(left-1)
