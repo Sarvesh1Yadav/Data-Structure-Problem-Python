@@ -7,30 +7,19 @@
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow = head
-        fast  = head
-        l=0
+        fast = head
         x = False
-        while fast!= None and fast.next!=None:
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
             if slow==fast:
-                x=True
+                x  = True
                 break
         if x==False:
             return None
-        while slow.next!=fast:
-            l+=1
-            slow = slow.next
-        l+=1
-        slow = slow.next
-        slow = head
-        fast  = head
-        for i in range(l):
+        pointer = head
+        while pointer!=fast:
+            pointer = pointer.next
             fast = fast.next
-        while slow!=fast:
-            slow=slow.next
-            fast = fast.next
-        return slow
-
-        
+        return pointer
         
