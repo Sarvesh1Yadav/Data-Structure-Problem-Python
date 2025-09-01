@@ -1,0 +1,32 @@
+Problem Statement - You are given the head of a singly linked list that may contain a loop.
+Your task is to remove the loop from the linked list if it exists and return the modified linked list.
+
+
+"""
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+"""
+class solution:
+    def removeLoop(self, Node, head):
+        #Write Your Code Here...
+        slow  = head
+        fast = head
+        x=True
+        while fast and fast.next:
+            slow = slow.next
+            fast =fast.next.next
+            if fast == slow:
+                x=False
+                break
+        while x:
+            return None
+        pointer = head
+        while pointer!=fast:
+            pointer = pointer.next
+            fast = fast.next
+        while fast.next!=pointer:
+            fast = fast.next
+        fast.next = None
+        return head
