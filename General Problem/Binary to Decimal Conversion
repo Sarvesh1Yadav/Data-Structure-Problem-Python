@@ -1,0 +1,13 @@
+class solution:
+    def binary_to_decimal(self, str):
+        # Write your code here...
+    
+        p = 0
+        sum=0
+        n = int(str)
+        while n>0:
+            r = n%10
+            sum+=r*pow(2,p)
+            p+=1
+            n = n//10
+        return sum
