@@ -1,0 +1,39 @@
+Problem Statement - In a singly linked list, remove all nodes that have a greater value node to their right.
+
+"""
+class Node:
+    def __init__(self, data=0, next=None, prev=None, child=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+        self.child = child
+"""
+class solution:
+    def rev(self,head):
+        prev = None
+        nxt = None
+        cur= head
+        while cur:
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+        return prev
+    def maximumToRight(self,head,Node):
+        #write your code here...
+         head =  self.rev(head)
+         cur = head
+         prev = head
+         ma  = head.data
+         head = head.next
+         while head:
+             if head.data >= ma:
+                 ma = head.data
+                 prev = head
+                 head = head.next
+             else:
+                 prev.next = head.next
+                 head = prev.next
+         head = self.rev(cur)
+         return head
+                 
