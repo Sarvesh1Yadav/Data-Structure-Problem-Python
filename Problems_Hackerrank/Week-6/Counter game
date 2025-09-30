@@ -1,0 +1,32 @@
+
+import math
+import os
+import random
+import re
+import sys
+
+def counterGame(n):
+    # Write your code here
+    count = 0
+    while n!=1:
+        if math.log2(n).is_integer():
+            n = n//2
+        else:
+            p = int(math.log2(n))
+            n = n-2**p
+        count+=1
+    return 'Richard' if count%2==0 else 'Louise'
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        result = counterGame(n)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
