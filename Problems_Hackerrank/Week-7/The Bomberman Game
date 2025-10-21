@@ -1,0 +1,55 @@
+import math
+import os
+import random
+import re
+import sys
+
+def bomberMan(n, grid):
+    if n == 0 or n == 1:
+        return grid
+
+    def detonate(g):
+        r, c = len(g), len(g[0])
+        result = [['O'] * c for _ in range(r)]
+        for i in range(r):
+            for j in range(c):
+                if g[i][j] == 'O':
+                    result[i][j] = '.'
+                    for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
+                        ni, nj = i + dx, j + dy
+                        if 0 <= ni < r and 0 <= nj < c:
+                            result[ni][nj] = '.'
+        return [''.join(row) for row in result]
+
+    # Only 2 possible explosion patterns: after t=3, then t=5
+    if n % 2 == 0:
+        return ['O' * len(grid[0]) for _ in grid]
+    else:
+        first = detonate(grid)
+        second = detonate(first)
+        return first if (n - 3) % 4 == 0 else second
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    r = int(first_multiple_input[0])
+
+    c = int(first_multiple_input[1])
+
+    n = int(first_multiple_input[2])
+
+    grid = []
+
+    for _ in range(r):
+        grid_item = input()
+        grid.append(grid_item)
+
+    result = bomberMan(n, grid)
+
+    fptr.write('\n'.join(result))
+    fptr.write('\n')
+
+    fptr.close()
