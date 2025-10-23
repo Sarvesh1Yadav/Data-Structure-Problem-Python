@@ -1,0 +1,56 @@
+Problem Statement - Goodland is a country with a number of evenly spaced cities along a line. The distance between adjacent cities is  unit.
+There is an energy infrastructure project planning meeting, and the government needs to know the fewest number of power plants needed to provide electricity to the entire list of cities.
+Determine that number. If it cannot be done, return -1.
+
+You are given a list of city data. Cities that may contain a power plant have been labeled . Others not suitable for building a plant are labeled .
+Given a distribution range of , find the lowest number of plants that must be built such that all cities are served. The distribution range limits supply to cities where distance is less than k.
+
+
+
+import math
+import os
+import random
+import re
+import sys
+
+
+def pylons(k, arr):
+    i = 0
+    count = 0
+    n = len(arr)
+    
+    while i < n:
+        x = False
+        # Search for the furthest 1 in the range [i + k - 1, i - (k - 1)]
+        start = min(n - 1, i + k - 1)
+        end = max(0, i - (k - 1))
+        
+        for j in range(start, end - 1, -1):
+            if arr[j] == 1:
+                count += 1
+                i = j + k  # Move to next uncovered position
+                x = True
+                break
+        
+        if not x:
+            return -1
+
+    return count
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    k = int(first_multiple_input[1])
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = pylons(k, arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
