@@ -1,0 +1,48 @@
+Problem Statement - Sherlock considers a string to be valid if all characters of the string appear the same number of times.
+It is also valid if he can remove just  character at  index in the string, and the remaining characters will occur the same number of times.
+Given a string , determine if it is valid. If so, return YES, otherwise return NO.
+
+import math
+import os
+import random
+import re
+import sys
+
+def isValid(s):
+    l = list(s)
+
+    freq = {}
+    for num in l:
+        if num in freq:
+            freq[num] += 1
+        else:
+            freq[num] = 1
+
+    values = list(freq.values())
+    freq_count = {}
+
+    for v in values:
+        if v in freq_count:
+            freq_count[v] += 1
+        else:
+            freq_count[v] = 1
+
+    if len(freq_count) == 1:
+        return 'YES'
+    elif len(freq_count) == 2:
+        keys = list(freq_count.keys())
+        if (freq_count[keys[0]] == 1 and (keys[0] - 1 == keys[1] or keys[0] == 1)) or \
+           (freq_count[keys[1]] == 1 and (keys[1] - 1 == keys[0] or keys[1] == 1)):
+            return 'YES'
+    return 'NO'
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = isValid(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
