@@ -1,0 +1,19 @@
+class Solution:
+    def maximumSwap(self, num: int) -> int:
+        lst = [int(digit) for digit in str(num)]
+        n = len(lst)
+
+
+        last = {digit: i for i, digit in enumerate(lst)}
+
+        for i in range(n):
+            
+            for d in range(9, lst[i], -1):
+                if d in last and last[d] > i:
+                    
+                    lst[i], lst[last[d]] = lst[last[d]], lst[i]
+                    
+                    nm = int(''.join(map(str, lst)))
+                    return nm
+        
+        return num
