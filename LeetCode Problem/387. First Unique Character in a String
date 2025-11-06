@@ -1,0 +1,17 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        n = len(s)
+        m = []
+        for i in range(n):
+            x=True
+            if s[i] not in m:
+                for j in range(i+1,n):
+                    if s[i]==s[j]:
+                        m.append(s[i])
+                        x=False
+                        break
+                if x:
+                    return i
+        return -1
+                
+        
