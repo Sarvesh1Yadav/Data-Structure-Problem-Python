@@ -1,0 +1,27 @@
+class Solution:
+    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+        memo = {}
+        n = len(arr)
+        def rec(idx):
+            
+            if idx==n:
+                return 0
+            
+            if idx in memo:
+                return memo[idx]
+            mx_num = float('-inf')
+            mx_sm=float('-inf')
+            ln=0
+            cr_sm=0
+            for i in range(idx,min(idx+k,n)):
+                ln=i-idx+1
+                mx_num = max(mx_num,arr[i])
+                cr_sm=ln*mx_num+rec(i+1)
+                mx_sm=max(mx_sm,cr_sm)
+            memo[idx] = mx_sm
+            return mx_sm
+        n = len(arr)
+        return rec(0)
+
+
+        
