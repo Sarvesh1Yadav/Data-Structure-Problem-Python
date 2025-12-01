@@ -1,0 +1,20 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp =  [-1]*(n+1)
+        return self.solve(nums,0,n,dp)
+
+        
+        
+    def solve(self,nums,i,n,dp):
+        
+        if i>=n:
+            return 0
+        if dp[i]!=-1:
+            return dp[i]
+       
+        take = nums[i]+self.solve(nums,i+2,n,dp)
+        skip = self.solve(nums,i+1,n,dp)
+        dp[i]=max(take,skip)
+        return dp[i]
+
