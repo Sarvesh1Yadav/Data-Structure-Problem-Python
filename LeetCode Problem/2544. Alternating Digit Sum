@@ -1,0 +1,16 @@
+class Solution:
+    def alternateDigitSum(self, n: int) -> int:
+        l = []
+        s=0
+    
+        while n>0:
+            r = n%10
+            l.append(r)
+            n=n//10
+        m=1
+        k=len(l)
+        for i in range(k-1,-1,-1):
+            s = s+m*l[i]
+            m=-1*m
+        return s
+        
