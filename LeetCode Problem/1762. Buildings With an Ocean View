@@ -1,0 +1,13 @@
+n = len(arr)
+l = []
+
+max_height = arr[n-1]   
+l.append(n-1)
+
+for i in range(n-2, -1, -1):
+    cur = arr[i]
+    if cur > max_height:
+        l.append(i)
+    max_height = max(max_height, cur)
+
+return l[::-1]
