@@ -1,0 +1,45 @@
+class Solution:
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        rows = len(mat)
+        cols = len(mat[0])
+        res=[]
+        
+        
+        for i in range(rows):
+            l = []
+            for j in  range(cols):
+              
+              
+                if (i-k)<0 :
+                    if (i+k)>(rows-1):
+                        r = [0,rows-1]
+                    else:
+                        r=[0,i+k]
+                else:
+                    if (i+k)>(rows-1):
+                        r = [i-k,rows-1]
+                    else:
+                        r=[i-k,i+k]
+                if (j-k)<0 :
+                    if (j+k)>(cols-1):
+                        c = [0,cols-1]
+                    else:
+                        c=[0,j+k]
+                else:
+                    if (j+k)>(cols-1):
+                        c = [j-k,cols-1]
+                    else:
+                        c=[j-k,j+k]
+                    
+                p = self.solve(r,c,mat)
+                l.append(p)
+            res.append(l)
+        return res
+
+    def solve(self,r,c,mat):
+        s=0
+        for i in range(r[0],r[1]+1):
+            for j in range(c[0],c[1]+1):
+                s+=mat[i][j]
+        return s
+        
