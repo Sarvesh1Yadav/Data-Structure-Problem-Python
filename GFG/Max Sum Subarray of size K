@@ -1,0 +1,14 @@
+class Solution:
+    def maxSubarraySum(self, arr, k):
+        # code here 
+        n = len(arr)
+        window_sm=sum(arr[:k])
+        mx_sm=window_sm
+        for i in range(k,n):
+            window_sm+=arr[i]
+            window_sm-=arr[i-k]
+            mx_sm=max(mx_sm,window_sm)
+        return mx_sm
+            
+      
+                
