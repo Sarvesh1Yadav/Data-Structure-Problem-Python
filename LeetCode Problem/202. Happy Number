@@ -1,22 +1,22 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        l = []
-        l.append(n)
-        s1 = n
+        def next(num):
+            sm=0
+            while num>0:
+                r = num%10
+                sm+=r**2
+                num=num//10
+            return sm
+        slow = n
+        fast = n
         while True:
-                s2  = 0
-                while s1!=0:
-                    r= s1%10
-                    s2+=r**2
-                    s1 = s1//10
-                if s2==1:
-                    return True
-                if s2 in l:
-                    return False
-                l.append(s2)
-                s1 = s2
+            slow = next(slow)
+            fast =  next(next(fast))
+            if fast==1:
+                return True
+            if fast==slow:
+                return False
             
-                
-
+            
 
         
