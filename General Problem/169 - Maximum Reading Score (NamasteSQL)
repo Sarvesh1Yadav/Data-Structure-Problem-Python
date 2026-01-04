@@ -1,0 +1,17 @@
+def get_max_score(books: list[tuple[str, int]]) -> int:
+    # Write your code here
+    books_sorted = sorted(books, key=lambda x: x[1], reverse=True)
+    n=len(books)
+    k=0
+    l=[]
+    sm=0
+    for i in range(n):
+        if k<3:
+            if books_sorted[i][0] not in l:
+                l.append(books_sorted[i][0])
+                sm+=books_sorted[i][1]
+                k+=1
+    return sm
+				
+		
+
