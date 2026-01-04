@@ -1,0 +1,16 @@
+def balance_jobs(jobs):
+    jobs.sort(reverse=True)
+
+    server_a = 0
+    server_b = 0
+
+    for job in jobs:
+        if server_a <= server_b:
+            server_a += job
+        else:
+            server_b += job
+
+    if server_b > server_a:
+        server_a, server_b = server_b, server_a
+
+    return (server_a, server_b)
