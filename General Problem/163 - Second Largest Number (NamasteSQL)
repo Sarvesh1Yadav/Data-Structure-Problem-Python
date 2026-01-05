@@ -1,0 +1,9 @@
+def find_second_largest(nums: list) -> int:
+	# write your code here
+	num = set(nums)
+	if len(num)<2:
+		return None
+	mx = max(num)
+	num.remove(mx)
+	
+	return max(num)
