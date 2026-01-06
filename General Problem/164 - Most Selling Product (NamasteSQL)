@@ -1,0 +1,11 @@
+def get_most_selling_product(sales: str) -> tuple[str, int]:
+    # write your code here
+		freq = {}
+		s = sales.split()
+		for i in s:
+			if i in freq:
+				freq[i]+=1
+			else:
+				freq[i]=1
+		res =  max(sorted(freq.items()),key=lambda x:x[1])
+		return res
