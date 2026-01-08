@@ -1,0 +1,12 @@
+def find_odd_occurrence(arr: list[int]) -> int:
+	# write your code here
+	freq={}
+	n=len(arr)
+	for i in arr:
+		if i in freq:
+			freq[i]+=1
+		else:
+			freq[i]=1
+	for key,value in freq.items():
+		if value%2!=0:
+			return key
