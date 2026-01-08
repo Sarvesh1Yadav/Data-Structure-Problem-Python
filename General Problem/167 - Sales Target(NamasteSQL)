@@ -1,0 +1,9 @@
+def first_day_to_reach_target(sales: list[int], target: int) -> int:
+	# write your code here
+	n = len(sales)
+	s = 0
+	for i in range(n):
+		s+=sales[i]
+		if s>=target:
+			return i+1
+	return -1
